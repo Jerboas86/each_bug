@@ -1,4 +1,4 @@
 # Steps
 
 - pnpm dev
-- click on add Button
+- click the add Button (will throw the exception)
