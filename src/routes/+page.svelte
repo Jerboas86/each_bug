@@ -1,15 +1,16 @@
 <script lang="ts">
-	import { items, Item } from '$lib/context.svelte';
+	import { PrivateItem } from '$lib/Items';
+	import { itemsState } from '$lib/items.svelte';
 
 	function addItem() {
-		const item = new Item();
-		items.addItem(item);
+		const item = new PrivateItem();
+		itemsState.addItem(item);
 	}
 </script>
 
 <svelte:boundary>
 	<button onclick={addItem}>Add</button>
-	{#each items.items as item (item.serialize())}
+	{#each itemsState.items as item (item.serialize())}
 		<div>{item.prop}</div>
 	{/each}
 </svelte:boundary>
