@@ -9,12 +9,19 @@ export class Item {
 	}
 }
 
-export class Context {
+export class Items {
 	items: Item[] = $state.raw([]);
 
 	addItem(item: Item) {
 		this.items.push(item);
+		this.#invalidate();
+	}
+
+	#invalidate() {
+		const memo = this.items;
+		this.items = null as unknown as Item[];
+		this.items = memo;
 	}
 }
 
-export const context = new Context();
+export const items = new Items();

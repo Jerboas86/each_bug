@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { context, Item } from '$lib/context.svelte';
+	import { items, Item } from '$lib/context.svelte';
 
-	async function addItem() {
+	function addItem() {
 		const item = new Item();
-		context.addItem(item);
+		items.addItem(item);
 	}
 </script>
 
 <svelte:boundary>
 	<button onclick={addItem}>Add</button>
-	{#each context.items as item (item.serialize())}
+	{#each items.items as item (item.serialize())}
 		<div>{item.prop}</div>
 	{/each}
 </svelte:boundary>
